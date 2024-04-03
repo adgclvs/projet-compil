@@ -13,13 +13,13 @@ rule token = parse
     | "And"                         { AND }
     | "Blue"                        { BLUE }
     | "Bool"                        { BOOL_TYP }
-    | "Color"                       { Color }
+    | "Color"                       { COLOR }
     | "Coord"                       { COORD }
     | "Cos"                         { COS }
     | "Draw"                        { DRAW }
     | "Else"                        { ELSE }
     | "False"                       { BOOL(false) }
-    | "Floor"                       { FLOR }
+    | "Floor"                       { FLOOR }
     | "For"                         { FOR }
     | "Foreach"                     { FOREACH }
     | "From"                        { FROM }
@@ -64,7 +64,9 @@ rule token = parse
     | "("                           { L_PAR }
     | ")"                           { R_PAR }
     | "["                           { L_SQ_BRK }
-    | "]"                           { R_CUR_BRK }
+    | "]"                           { R_SQ_BRK }
+    | "{"                           { L_CUR_BRK }
+    | "}"                           { R_CUR_BRK }
     | ","                           { COMMA }
     | ";"                           { SEMICOLON }
     | (alphamin)+ (alphanum)* as s  { ID(s) }
