@@ -1,0 +1,52 @@
+# dune build @doc
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/adrien/.cache/dune/db
+# Workspace root: /home/adrien/L3/S6/compilation/projet-compil
+# Auto-detected concurrency: 16
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; installed_env =
+#      map
+#        { "INSIDE_DUNE" :
+#            "/home/adrien/L3/S6/compilation/projet-compil/_build/default"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; instrument_with = []
+#  }
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_e2c932_output
+$ (cd _build/default && /home/adrien/.opam/default/bin/odoc support-files -o _doc/_html/odoc.support)
+$ (cd _build/default/_doc/_odoc/pkg/pixlang && /home/adrien/.opam/default/bin/odoc compile --pkg pixlang -o page-index.odoc ../../../_mlds/pixlang/index.mld)
+$ (cd _build/default/util/.util.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang --pkg pixlang -o util.odoc util.cmt)
+$ (cd _build/default/util/.util.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang --pkg pixlang -o util__Position.odoc util__Position.cmti)
+$ (cd _build/default/util/.util.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang --pkg pixlang -o util__Environment.odoc util__Environment.cmti)
+$ (cd _build/default/util/.util.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang --pkg pixlang -o util__Error_report.odoc util__Error_report.cmti)
+$ (cd _build/default/language/.ast.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../util/.util.objs/byte --pkg pixlang -o ast.odoc ast.cmti)
+$ (cd _build/default/parser/.language_parser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o language_parser.odoc language_parser.cmt)
+$ (cd _build/default/interpreter/.interpreter.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o interpreter.odoc interpreter.cmti)
+$ (cd _build/default/analyser/.analyser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o analyser__.odoc analyser__.cmt)
+$ (cd _build/default/parser/.language_parser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o language_parser__Cmly.odoc language_parser__Cmly.cmt)
+$ (cd _build/default/analyser/.analyser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o analyser.odoc analyser.cmti)
+$ (cd _build/default/parser/.language_parser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o language_parser__Parser.odoc language_parser__Parser.cmti)
+$ (cd _build/default/analyser/.analyser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o analyser__Simplifier.odoc analyser__Simplifier.cmt)
+$ (cd _build/default/analyser/.analyser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o analyser__Renaming.odoc analyser__Renaming.cmt)
+$ (cd _build/default/analyser/.analyser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o analyser__Type_analyser.odoc analyser__Type_analyser.cmt)
+$ (cd _build/default/parser/.language_parser.objs/byte && /home/adrien/.opam/default/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/pixlang -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg pixlang -o language_parser__Lexer.odoc language_parser__Lexer.cmt)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/page-index.odocl ../_odoc/pkg/pixlang/page-index.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/analyser.odocl ../../analyser/.analyser.objs/byte/analyser.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/interpreter.odocl ../../interpreter/.interpreter.objs/byte/interpreter.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/util.odocl ../../util/.util.objs/byte/util.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/language_parser.odocl ../../parser/.language_parser.objs/byte/language_parser.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc link -I ../_odoc/pkg/pixlang -I ../../analyser/.analyser.objs/byte -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../parser/.language_parser.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/pixlang/ast.odocl ../../language/.ast.objs/byte/ast.odoc)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/page-index.odocl)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/analyser.odocl)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/interpreter.odocl)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/util.odocl)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/ast.odocl)
+$ (cd _build/default/_doc/_html && /home/adrien/.opam/default/bin/odoc html-generate -o . --support-uri odoc.support --theme-uri odoc.support ../_odocls/pixlang/language_parser.odocl)

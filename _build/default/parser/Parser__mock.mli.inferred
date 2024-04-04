@@ -1,0 +1,77 @@
+type token =
+    Y
+  | X
+  | TO
+  | TAIL
+  | SUB
+  | STEP
+  | SIN
+  | SET
+  | SEMICOLON
+  | R_SQ_BRK
+  | R_PAR
+  | R_CUR_BRK
+  | RED
+  | REAL_TYP
+  | REAL_OF_INT
+  | REAL of float
+  | PRINT
+  | PIXEL
+  | PI
+  | OR
+  | OPEN
+  | NOT
+  | NEQ
+  | MUL
+  | MOD
+  | L_SQ_BRK
+  | L_PAR
+  | L_CUR_BRK
+  | LT
+  | LIST
+  | LEQ
+  | INT_TYP
+  | INT of int
+  | IN
+  | IF
+  | ID of string
+  | HEAD
+  | GT
+  | GREEN
+  | GEQ
+  | FROM
+  | FOREACH
+  | FOR
+  | FLOOR
+  | EQ
+  | EOF
+  | ELSE
+  | DRAW
+  | DOT
+  | DIV
+  | COS
+  | COORD
+  | CONS
+  | COMMA
+  | COLOR
+  | COLON
+  | CLOSE
+  | BOOL_TYP
+  | BOOL of bool
+  | BLUE
+  | AND
+  | ADD
+val menhir_begin_marker : int
+val xv_unop : Ast.unary_operator
+val xv_typ : Ast.type_expression
+val xv_statement_list : Ast.statement list
+val xv_statement : Ast.statement
+val xv_program : Ast.program
+val xv_main : Ast.program
+val xv_field : Ast.field_accessor
+val xv_expression_list : Ast.expression list
+val xv_expression : Ast.expression
+val xv_binop : Ast.binary_operator
+val xv_argument_list : Ast.argument list
+val xv_argument : Ast.argument
+val menhir_end_marker : int

@@ -1,0 +1,722 @@
+
+** Conflict (reduce/reduce) in state 149.
+** Token involved: CLOSE
+** This state is reached from main after reading:
+
+OPEN statement SEMICOLON
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+OPEN statement_list CLOSE // lookahead token appears
+     statement SEMICOLON statement_list // lookahead token is inherited
+                         (?)
+
+** In state 149, looking ahead at CLOSE, reducing production
+** statement ->
+** is permitted because of the following sub-derivation:
+
+statement // lookahead token is inherited
+. 
+
+** In state 149, looking ahead at CLOSE, reducing production
+** statement_list ->
+** is permitted because of the following sub-derivation:
+
+. 
+
+** Conflict (shift/reduce) in state 143.
+** Token involved: ELSE
+** This state is reached from main after reading:
+
+IF L_PAR expression R_PAR IF L_PAR expression R_PAR statement
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+(?)
+
+** In state 143, looking ahead at ELSE, shifting is permitted
+** because of the following sub-derivation:
+
+IF L_PAR expression R_PAR statement ELSE statement 
+                          IF L_PAR expression R_PAR statement . ELSE statement 
+
+** In state 143, looking ahead at ELSE, reducing production
+** statement -> IF L_PAR expression R_PAR statement
+** is permitted because of the following sub-derivation:
+
+IF L_PAR expression R_PAR statement ELSE statement // lookahead token appears
+                          IF L_PAR expression R_PAR statement . 
+
+** Conflict (reduce/reduce) in state 106.
+** Token involved: CLOSE
+** This state is reached from main after reading:
+
+OPEN
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+OPEN statement_list CLOSE // lookahead token appears
+     (?)
+
+** In state 106, looking ahead at CLOSE, reducing production
+** statement ->
+** is permitted because of the following sub-derivation:
+
+statement // lookahead token is inherited
+. 
+
+** In state 106, looking ahead at CLOSE, reducing production
+** statement_list ->
+** is permitted because of the following sub-derivation:
+
+. 
+
+** Conflict (shift/reduce) in state 91.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR TAIL expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 91, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+TAIL expression 
+     expression . SUB expression 
+
+** In state 91, looking ahead at SUB, reducing production
+** expression -> TAIL expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+TAIL expression . 
+
+** Conflict (shift/reduce) in state 90.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR SUB expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 90, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+SUB expression 
+    expression . SUB expression 
+
+** In state 90, looking ahead at SUB, reducing production
+** expression -> SUB expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+SUB expression . 
+
+** Conflict (shift/reduce) in state 89.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR SIN expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 89, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+SIN expression 
+    expression . SUB expression 
+
+** In state 89, looking ahead at SUB, reducing production
+** expression -> SIN expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+SIN expression . 
+
+** Conflict (shift/reduce) in state 88.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR REAL_OF_INT expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 88, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+REAL_OF_INT expression 
+            expression . SUB expression 
+
+** In state 88, looking ahead at SUB, reducing production
+** expression -> REAL_OF_INT expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+REAL_OF_INT expression . 
+
+** Conflict (shift/reduce) in state 83.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR NOT expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 83, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+NOT expression 
+    expression . SUB expression 
+
+** In state 83, looking ahead at SUB, reducing production
+** expression -> NOT expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+NOT expression . 
+
+** Conflict (shift/reduce) in state 73.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR HEAD expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 73, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+HEAD expression 
+     expression . SUB expression 
+
+** In state 73, looking ahead at SUB, reducing production
+** expression -> HEAD expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+HEAD expression . 
+
+** Conflict (shift/reduce) in state 72.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR FLOOR expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 72, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+FLOOR expression 
+      expression . SUB expression 
+
+** In state 72, looking ahead at SUB, reducing production
+** expression -> FLOOR expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+FLOOR expression . 
+
+** Conflict (shift/reduce) in state 71.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR COS expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 71, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+COS expression 
+    expression . SUB expression 
+
+** In state 71, looking ahead at SUB, reducing production
+** expression -> COS expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+COS expression . 
+
+** Conflict (shift/reduce) in state 61.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression ADD expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 61, looking ahead at SUB, reducing production
+** expression -> expression ADD expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression ADD expression . 
+
+** In state 61, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression ADD expression 
+               expression . SUB expression 
+
+** Conflict (shift/reduce) in state 59.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression AND expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 59, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression AND expression 
+               expression . SUB expression 
+
+** In state 59, looking ahead at SUB, reducing production
+** expression -> expression AND expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression AND expression . 
+
+** Conflict (shift/reduce) in state 57.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression CONS expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 57, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression CONS expression 
+                expression . SUB expression 
+
+** In state 57, looking ahead at SUB, reducing production
+** expression -> expression CONS expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression CONS expression . 
+
+** Conflict (shift/reduce) in state 55.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression DIV expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 55, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression DIV expression 
+               expression . SUB expression 
+
+** In state 55, looking ahead at SUB, reducing production
+** expression -> expression DIV expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression DIV expression . 
+
+** Conflict (shift/reduce) in state 45.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression EQ expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 45, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression EQ expression 
+              expression . SUB expression 
+
+** In state 45, looking ahead at SUB, reducing production
+** expression -> expression EQ expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression EQ expression . 
+
+** Conflict (shift/reduce) in state 43.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression GEQ expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 43, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression GEQ expression 
+               expression . SUB expression 
+
+** In state 43, looking ahead at SUB, reducing production
+** expression -> expression GEQ expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression GEQ expression . 
+
+** Conflict (shift/reduce) in state 41.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression GT expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 41, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression GT expression 
+              expression . SUB expression 
+
+** In state 41, looking ahead at SUB, reducing production
+** expression -> expression GT expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression GT expression . 
+
+** Conflict (shift/reduce) in state 39.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression LEQ expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 39, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression LEQ expression 
+               expression . SUB expression 
+
+** In state 39, looking ahead at SUB, reducing production
+** expression -> expression LEQ expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression LEQ expression . 
+
+** Conflict (shift/reduce) in state 37.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression LT expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 37, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression LT expression 
+              expression . SUB expression 
+
+** In state 37, looking ahead at SUB, reducing production
+** expression -> expression LT expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression LT expression . 
+
+** Conflict (shift/reduce) in state 35.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression MOD expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 35, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression MOD expression 
+               expression . SUB expression 
+
+** In state 35, looking ahead at SUB, reducing production
+** expression -> expression MOD expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression MOD expression . 
+
+** Conflict (shift/reduce) in state 33.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression MUL expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 33, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression MUL expression 
+               expression . SUB expression 
+
+** In state 33, looking ahead at SUB, reducing production
+** expression -> expression MUL expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression MUL expression . 
+
+** Conflict (shift/reduce) in state 31.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression NEQ expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 31, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression NEQ expression 
+               expression . SUB expression 
+
+** In state 31, looking ahead at SUB, reducing production
+** expression -> expression NEQ expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression NEQ expression . 
+
+** Conflict (shift/reduce) in state 29.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression OR expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 29, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression OR expression 
+              expression . SUB expression 
+
+** In state 29, looking ahead at SUB, reducing production
+** expression -> expression OR expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression OR expression . 
+
+** Conflict (shift/reduce) in state 27.
+** Tokens involved: SUB OR NEQ MUL MOD LT LEQ GT GEQ EQ DOT DIV CONS AND ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from main after reading:
+
+SET L_PAR expression SUB expression
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+program EOF 
+statement 
+SET L_PAR expression COMMA expression R_PAR 
+          (?)
+
+** In state 27, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+expression SUB expression 
+               expression . SUB expression 
+
+** In state 27, looking ahead at SUB, reducing production
+** expression -> expression SUB expression
+** is permitted because of the following sub-derivation:
+
+expression SUB expression // lookahead token appears
+expression SUB expression . 

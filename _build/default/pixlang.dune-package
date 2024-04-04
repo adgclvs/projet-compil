@@ -1,0 +1,293 @@
+(lang dune 3.14)
+(name pixlang)
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/pixlang))
+(files
+ (lib
+  (META
+   __private__/analyser/.public_cmi/analyser.cmi
+   __private__/analyser/.public_cmi/analyser.cmt
+   __private__/analyser/.public_cmi/analyser.cmti
+   __private__/analyser/.public_cmi/analyser__.cmi
+   __private__/analyser/.public_cmi/analyser__.cmt
+   __private__/analyser/.public_cmi/analyser__Renaming.cmi
+   __private__/analyser/.public_cmi/analyser__Renaming.cmt
+   __private__/analyser/.public_cmi/analyser__Simplifier.cmi
+   __private__/analyser/.public_cmi/analyser__Simplifier.cmt
+   __private__/analyser/.public_cmi/analyser__Type_analyser.cmi
+   __private__/analyser/.public_cmi/analyser__Type_analyser.cmt
+   __private__/analyser/analyser.a
+   __private__/analyser/analyser.cma
+   __private__/analyser/analyser.cmx
+   __private__/analyser/analyser.cmxa
+   __private__/analyser/analyser.ml
+   __private__/analyser/analyser.mli
+   __private__/analyser/analyser__.cmx
+   __private__/analyser/analyser__.ml
+   __private__/analyser/analyser__Renaming.cmx
+   __private__/analyser/analyser__Simplifier.cmx
+   __private__/analyser/analyser__Type_analyser.cmx
+   __private__/analyser/renaming.ml
+   __private__/analyser/simplifier.ml
+   __private__/analyser/type_analyser.ml
+   __private__/ast/.public_cmi/ast.cmi
+   __private__/ast/.public_cmi/ast.cmt
+   __private__/ast/.public_cmi/ast.cmti
+   __private__/ast/ast.a
+   __private__/ast/ast.cma
+   __private__/ast/ast.cmx
+   __private__/ast/ast.cmxa
+   __private__/ast/ast.ml
+   __private__/ast/ast.mli
+   __private__/interpreter/.public_cmi/interpreter.cmi
+   __private__/interpreter/.public_cmi/interpreter.cmt
+   __private__/interpreter/.public_cmi/interpreter.cmti
+   __private__/interpreter/interpreter.a
+   __private__/interpreter/interpreter.cma
+   __private__/interpreter/interpreter.cmx
+   __private__/interpreter/interpreter.cmxa
+   __private__/interpreter/interpreter.ml
+   __private__/interpreter/interpreter.mli
+   __private__/language_parser/.public_cmi/language_parser.cmi
+   __private__/language_parser/.public_cmi/language_parser.cmt
+   __private__/language_parser/.public_cmi/language_parser__Cmly.cmi
+   __private__/language_parser/.public_cmi/language_parser__Cmly.cmt
+   __private__/language_parser/.public_cmi/language_parser__Lexer.cmi
+   __private__/language_parser/.public_cmi/language_parser__Lexer.cmt
+   __private__/language_parser/.public_cmi/language_parser__Parser.cmi
+   __private__/language_parser/.public_cmi/language_parser__Parser.cmt
+   __private__/language_parser/.public_cmi/language_parser__Parser.cmti
+   __private__/language_parser/Cmly.ml
+   __private__/language_parser/Lexer.ml
+   __private__/language_parser/Parser.ml
+   __private__/language_parser/Parser.mli
+   __private__/language_parser/language_parser.a
+   __private__/language_parser/language_parser.cma
+   __private__/language_parser/language_parser.cmx
+   __private__/language_parser/language_parser.cmxa
+   __private__/language_parser/language_parser.ml
+   __private__/language_parser/language_parser__Cmly.cmx
+   __private__/language_parser/language_parser__Lexer.cmx
+   __private__/language_parser/language_parser__Parser.cmx
+   __private__/util/.public_cmi/util.cmi
+   __private__/util/.public_cmi/util.cmt
+   __private__/util/.public_cmi/util__Environment.cmi
+   __private__/util/.public_cmi/util__Environment.cmt
+   __private__/util/.public_cmi/util__Environment.cmti
+   __private__/util/.public_cmi/util__Error_report.cmi
+   __private__/util/.public_cmi/util__Error_report.cmt
+   __private__/util/.public_cmi/util__Error_report.cmti
+   __private__/util/.public_cmi/util__Position.cmi
+   __private__/util/.public_cmi/util__Position.cmt
+   __private__/util/.public_cmi/util__Position.cmti
+   __private__/util/environment.ml
+   __private__/util/environment.mli
+   __private__/util/error_report.ml
+   __private__/util/error_report.mli
+   __private__/util/position.ml
+   __private__/util/position.mli
+   __private__/util/util.a
+   __private__/util/util.cma
+   __private__/util/util.cmx
+   __private__/util/util.cmxa
+   __private__/util/util.ml
+   __private__/util/util__Environment.cmx
+   __private__/util/util__Error_report.cmx
+   __private__/util/util__Position.cmx
+   dune-package
+   opam))
+ (libexec
+  (__private__/analyser/analyser.cmxs
+   __private__/ast/ast.cmxs
+   __private__/interpreter/interpreter.cmxs
+   __private__/language_parser/language_parser.cmxs
+   __private__/util/util.cmxs))
+ (bin (interpreter parser_visualiser))
+ (doc (README.md)))
+(library
+ (name pixlang.__private__.analyser)
+ (kind normal)
+ (archives
+  (byte __private__/analyser/analyser.cma)
+  (native __private__/analyser/analyser.cmxa))
+ (plugins
+  (byte __private__/analyser/analyser.cma)
+  (native __private__/analyser/analyser.cmxs))
+ (native_archives __private__/analyser/analyser.a)
+ (requires pixlang.__private__.ast pixlang.__private__.util)
+ (main_module_name Analyser)
+ (modes byte native)
+ (obj_dir
+  (public_cmi_ocaml_dir .public_cmi)
+  (public_cmi_melange_dir melange/.public_cmi_melange))
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name analyser__)
+     (visibility public)
+     (kind alias)
+     (source
+      (path Analyser__)
+      (impl (path __private__/analyser/analyser__.ml-gen))))
+    (name Analyser)
+    (modules
+     (module
+      (obj_name analyser)
+      (visibility public)
+      (source
+       (path Analyser)
+       (intf (path __private__/analyser/analyser.mli))
+       (impl (path __private__/analyser/analyser.ml))))
+     (module
+      (obj_name analyser__Renaming)
+      (visibility public)
+      (source (path Renaming) (impl (path __private__/analyser/renaming.ml))))
+     (module
+      (obj_name analyser__Simplifier)
+      (visibility public)
+      (source
+       (path Simplifier)
+       (impl (path __private__/analyser/simplifier.ml))))
+     (module
+      (obj_name analyser__Type_analyser)
+      (visibility public)
+      (source
+       (path Type_analyser)
+       (impl (path __private__/analyser/type_analyser.ml))))))
+   (wrapped true))))
+(library
+ (name pixlang.__private__.ast)
+ (kind normal)
+ (archives (byte __private__/ast/ast.cma) (native __private__/ast/ast.cmxa))
+ (plugins (byte __private__/ast/ast.cma) (native __private__/ast/ast.cmxs))
+ (native_archives __private__/ast/ast.a)
+ (requires pixlang.__private__.util)
+ (main_module_name Ast)
+ (modes byte native)
+ (obj_dir
+  (public_cmi_ocaml_dir .public_cmi)
+  (public_cmi_melange_dir melange/.public_cmi_melange))
+ (modules
+  (singleton
+   (obj_name ast)
+   (visibility public)
+   (source
+    (path Ast)
+    (intf (path __private__/ast/ast.mli))
+    (impl (path __private__/ast/ast.ml))))))
+(library
+ (name pixlang.__private__.interpreter)
+ (kind normal)
+ (archives
+  (byte __private__/interpreter/interpreter.cma)
+  (native __private__/interpreter/interpreter.cmxa))
+ (plugins
+  (byte __private__/interpreter/interpreter.cma)
+  (native __private__/interpreter/interpreter.cmxs))
+ (native_archives __private__/interpreter/interpreter.a)
+ (requires pixlang.__private__.ast pixlang.__private__.util graphics)
+ (main_module_name Interpreter)
+ (modes byte native)
+ (obj_dir
+  (public_cmi_ocaml_dir .public_cmi)
+  (public_cmi_melange_dir melange/.public_cmi_melange))
+ (modules
+  (singleton
+   (obj_name interpreter)
+   (visibility public)
+   (source
+    (path Interpreter)
+    (intf (path __private__/interpreter/interpreter.mli))
+    (impl (path __private__/interpreter/interpreter.ml))))))
+(library
+ (name pixlang.__private__.language_parser)
+ (kind normal)
+ (archives
+  (byte __private__/language_parser/language_parser.cma)
+  (native __private__/language_parser/language_parser.cmxa))
+ (plugins
+  (byte __private__/language_parser/language_parser.cma)
+  (native __private__/language_parser/language_parser.cmxs))
+ (native_archives __private__/language_parser/language_parser.a)
+ (requires menhirLib pixlang.__private__.ast)
+ (main_module_name Language_parser)
+ (modes byte native)
+ (obj_dir
+  (public_cmi_ocaml_dir .public_cmi)
+  (public_cmi_melange_dir melange/.public_cmi_melange))
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name language_parser)
+     (visibility public)
+     (kind alias)
+     (source
+      (path Language_parser)
+      (impl (path __private__/language_parser/language_parser.ml-gen))))
+    (name Language_parser)
+    (modules
+     (module
+      (obj_name language_parser__Cmly)
+      (visibility public)
+      (source (path Cmly) (impl (path __private__/language_parser/Cmly.ml))))
+     (module
+      (obj_name language_parser__Lexer)
+      (visibility public)
+      (source (path Lexer) (impl (path __private__/language_parser/Lexer.ml))))
+     (module
+      (obj_name language_parser__Parser)
+      (visibility public)
+      (source
+       (path Parser)
+       (intf (path __private__/language_parser/Parser.mli))
+       (impl (path __private__/language_parser/Parser.ml))))))
+   (wrapped true))))
+(library
+ (name pixlang.__private__.util)
+ (kind normal)
+ (archives
+  (byte __private__/util/util.cma)
+  (native __private__/util/util.cmxa))
+ (plugins
+  (byte __private__/util/util.cma)
+  (native __private__/util/util.cmxs))
+ (native_archives __private__/util/util.a)
+ (requires menhirLib)
+ (main_module_name Util)
+ (modes byte native)
+ (obj_dir
+  (public_cmi_ocaml_dir .public_cmi)
+  (public_cmi_melange_dir melange/.public_cmi_melange))
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name util)
+     (visibility public)
+     (kind alias)
+     (source (path Util) (impl (path __private__/util/util.ml-gen))))
+    (name Util)
+    (modules
+     (module
+      (obj_name util__Environment)
+      (visibility public)
+      (source
+       (path Environment)
+       (intf (path __private__/util/environment.mli))
+       (impl (path __private__/util/environment.ml))))
+     (module
+      (obj_name util__Error_report)
+      (visibility public)
+      (source
+       (path Error_report)
+       (intf (path __private__/util/error_report.mli))
+       (impl (path __private__/util/error_report.ml))))
+     (module
+      (obj_name util__Position)
+      (visibility public)
+      (source
+       (path Position)
+       (intf (path __private__/util/position.mli))
+       (impl (path __private__/util/position.ml))))))
+   (wrapped true))))
