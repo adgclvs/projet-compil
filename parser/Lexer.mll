@@ -65,8 +65,6 @@ rule token = parse
     | ")"                           { R_PAR }
     | "["                           { L_SQ_BRK }
     | "]"                           { R_SQ_BRK }
-    | "{"                           { L_CUR_BRK }
-    | "}"                           { R_CUR_BRK }
     | ","                           { COMMA }
     | ";"                           { SEMICOLON }
     | (alphamin)+ (alphanum)* as s  { ID(s) }

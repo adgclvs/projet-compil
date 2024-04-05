@@ -58,8 +58,6 @@
 %token R_PAR      
 %token L_SQ_BRK   
 %token R_SQ_BRK  
-%token L_CUR_BRK
-%token R_CUR_BRK
 %token COMMA      
 %token SEMICOLON
 %token <string> ID
@@ -69,20 +67,26 @@
 %token EOF
 
 
+%right DOT
+%right CONS
+%left OR
+%left AND
+%nonassoc EQ NEQ LT GT GEQ LEQ
+%left ADD SUB 
+%left MUL DIV MOD
 
 %start <program> main
 %%
 
 main:
-| p = program EOF { Program([],Block([],Annotation.create $loc)) }
-
+| p = program EOF { p }
 
 program:
 | LT arg_list = argument_list GT stmt = statement  { Program(arg_list, stmt)}
 | stmt = statement      { Program([], stmt)}
 
 argument:
-|typ = typ COLON L_CUR_BRK id = ID R_CUR_BRK{Argument(id,typ, Annotation.create $loc)}
+|typ = typ COLON id = ID {Argument(id,typ, Annotation.create $loc)}
 
 argument_list:
 |  expr = argument SEMICOLON args = argument_list  {expr :: args}
@@ -123,8 +127,10 @@ expression:
 | L_SQ_BRK arg_list = expression_list R_SQ_BRK {List(arg_list, Annotation.create $loc)}
 
 expression_list:
-| L_SQ_BRK expr = expression COMMA args = expression_list R_SQ_BRK {expr::args}
-| L_SQ_BRK expr = expression R_SQ_BRK {[expr]}
+| expr = expression COMMA expr_list = expression_list {expr::expr_list}
+| expr = expression {[expr]}
+| {[]}
+
 
 
 %inline binop:
@@ -161,12 +167,11 @@ expression_list:
 | RED       { Red_field }
 | GREEN     { Green_field }
 
-%inline typ:
+type_expression:
 |INT_TYP {Type_int}
 |BOOL_TYP {Type_bool}
 |REAL_TYP {Type_real}
 |PIXEL {Type_pixel}
 |COORD {Type_coord}
 |COLOR {Type_color}
-//|LIST {Type_list()} Cela prends un argument ( je sais pas lequel!) 
-| {Type_generic}
+|LIST L_PAR t = typ R_PAR {Type_list(t)}
