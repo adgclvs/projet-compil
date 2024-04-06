@@ -100,7 +100,7 @@ statement:
 | typ = type_expression COLON  id = ID  {Declaration(id, typ, Annotation.create $loc)}
 | OPEN stmt_list = statement_list CLOSE {Block(stmt_list,Annotation.create $loc )}
 | IF L_PAR expr = expression R_PAR stmt1 = statement ELSE stmt2 = statement {IfThenElse(expr,stmt1, stmt2, Annotation.create $loc)}
-| IF L_PAR expr = expression R_PAR stmt = statement  %prec Then {IfThenElse(expr, stmt, Nop, Annotation.create $loc)}
+| IF L_PAR expr = expression R_PAR stmt = statement %prec Then {IfThenElse(expr, stmt, Nop, Annotation.create $loc)}
 | FOR  id = ID FROM expr1 = expression TO expr2 = expression STEP expr3 = expression stmt = statement {For(id, expr1,expr2,expr3,stmt, Annotation.create $loc)}
 | FOREACH  id = ID  IN expr = expression stmt = statement {Foreach(id,expr,stmt,Annotation.create $loc)}
 | DRAW L_PAR expr = expression R_PAR {Draw_pixel(expr,Annotation.create $loc)}
@@ -108,8 +108,8 @@ statement:
 | {Nop}
 
 statement_list:
-|  stmt = statement SEMICOLON stmts_list = statement_list{stmt::stmts_list}
-| {[]}
+| stmt = statement SEMICOLON stmts_list = statement_list{stmt::stmts_list}
+| stmt = statement {[stmt]}
 
 expression:
 | i = INT   { Const_int(i, Annotation.create $loc)}
