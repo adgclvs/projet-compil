@@ -60,7 +60,9 @@
 %token R_SQ_BRK  
 %token COMMA      
 %token SEMICOLON
-//%token QST_MARQ
+%token QST_MARQ
+%token WHILE
+%token POW
 %token <string> ID
 %token <int> INT
 %token <float> REAL
@@ -77,6 +79,7 @@
 %right DOT 
 %right CONS
 %nonassoc UNOP
+%left POW
 
 %start <program> main
 %%
@@ -100,11 +103,12 @@ statement:
 | SET L_PAR expr1 = expression COMMA expr2 = expression R_PAR {Affectation(expr1, expr2, Annotation.create $loc)}
 | typ = type_expression COLON  id = ID  {Declaration(id, typ, Annotation.create $loc)}
 | OPEN stmt_list = statement_list CLOSE {Block(stmt_list,Annotation.create $loc )}
-//Rajouer le ternaire 
+| L_PAR expr = expression R_PAR QST_MARQ stmt1 = statement COLON stmt2 = statement {IfThenElse(expr, stmt1, stmt2, Annotation.create $loc)}
 | IF L_PAR expr = expression R_PAR stmt1 = statement ELSE stmt2 = statement {IfThenElse(expr,stmt1, stmt2, Annotation.create $loc)}
 | IF L_PAR expr = expression R_PAR stmt = statement %prec Then {IfThenElse(expr, stmt, Nop, Annotation.create $loc)}
 | FOR  id = ID FROM expr1 = expression TO expr2 = expression STEP expr3 = expression stmt = statement {For(id, expr1,expr2,expr3,stmt, Annotation.create $loc)}
 | FOREACH  id = ID  IN expr = expression stmt = statement {Foreach(id,expr,stmt,Annotation.create $loc)}
+| WHILE L_PAR expr = expression R_PAR stmt = statement {While(expr,stmt,Annotation.create $loc)}
 | DRAW L_PAR expr = expression R_PAR {Draw_pixel(expr,Annotation.create $loc)}
 | PRINT L_PAR expr = expression R_PAR {Print(expr, Annotation.create $loc)}
 | {Nop}
@@ -123,6 +127,7 @@ expression:
 | COLOR L_PAR expr1 = expression COMMA expr2 = expression COMMA expr3 = expression R_PAR { Color(expr1, expr2, expr3, Annotation.create $loc)}
 | PIXEL L_PAR expr1 = expression COMMA expr2 = expression R_PAR { Pixel(expr1, expr2, Annotation.create $loc)}
 | expr1 = expression b = binop expr2 = expression  { Binary_operator(b, expr1, expr2, Annotation.create $loc)}
+| expr = expression POW {Binary_operator(Times, expr, expr, Annotation.create $loc)}
 | u = unop expr = expression %prec UNOP { Unary_operator(u, expr, Annotation.create $loc)}
 | expr = expression DOT f = field { Field_accessor(f, expr, Annotation.create $loc)}
 | expr1 = expression CONS expr2 = expression  { Append(expr1, expr2, Annotation.create $loc)}

@@ -309,6 +309,13 @@ let rec interpret_statement environment = function
             l
       (* Environment.remove_layer environment *)
       | _ -> failwith "Iterating on something else than a list")
+  | While (test, stmt, annotation) ->(
+      match interpret_expression environment test with
+      | Bool true ->
+          interpret_statement environment stmt;
+          interpret_statement environment (While (test, stmt, annotation))
+      | Bool false -> ()
+      | _ -> failwith "testing a non-boolean value")
   | Draw_pixel (expression, _) -> (
       match interpret_expression environment expression with
       | Pixel p ->

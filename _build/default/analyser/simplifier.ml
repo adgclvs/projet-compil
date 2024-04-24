@@ -32,31 +32,31 @@ let rec simplifier_expr (expr : Ast.expression) =
           annotation )
   | Pixel (coord, color, annotation) ->
       Pixel (simplifier_expr coord, simplifier_expr color, annotation)
-      | Unary_operator (op, e, annotation) -> (
+      | Unary_operator (operation, e, annotation) -> (
         match e with
-        | Unary_operator (Real_of_int, Const_int (n, _), _) when op = Floor ->
+        | Unary_operator (Real_of_int, Const_int (n, _), _) when operation = Floor ->
             Const_int (n, annotation)
         | _ -> (
             match simplifier_expr e with
             | Const_int (i, _) -> (
-                match op with
+                match operation with
                 | Opposite -> Const_int (-i, annotation)
                 | Real_of_int -> Const_real (float_of_int i, annotation)
-                | _ -> Unary_operator (op, simplifier_expr e, annotation))
+                | _ -> Unary_operator (operation, simplifier_expr e, annotation))
             | Const_real (r, _) -> (
-                match op with
+                match operation with
                 | Opposite -> Const_real (-.r, annotation)
                 | Floor -> Const_int (int_of_float r, annotation)
                 | Cos -> Const_real (Float.cos r, annotation)
                 | Sin -> Const_real (Float.sin r, annotation)
-                | _ -> Unary_operator (op, simplifier_expr e, annotation))
+                | _ -> Unary_operator (operation, simplifier_expr e, annotation))
             | Const_bool (b, _) -> (
-                match op with
+                match operation with
                 | Not -> Const_bool (not b, annotation)
-                | _ -> Unary_operator (op, simplifier_expr e, annotation))
+                | _ -> Unary_operator (operation, simplifier_expr e, annotation))
             | List (l, _) ->
                 List (List.map (fun e -> simplifier_expr e) l, annotation)
-            | _ -> Unary_operator (op, simplifier_expr e, annotation)))
+            | _ -> Unary_operator (operation, simplifier_expr e, annotation)))
   | Binary_operator (op, e1, e2, annotation) ->
       (match (simplifier_expr e1, simplifier_expr e2) with
       | (Const_int (i1, _), Const_int (i2, _)) ->

@@ -60,6 +60,7 @@ let rec renaming_stmt (statement : statement) (env : 'a Environment.t) = match s
          Foreach(id^"#"^(string_of_int j), (renaming_expr test env), new_body, annotation)
       |None -> let _ = Environment.add new_env id 0 in let new_body = renaming_stmt body new_env in 
          Foreach(id, (renaming_expr test env), new_body, annotation))
+   |While(test, body, annotation) -> let new_env = Environment.copy env in While((renaming_expr test env), (renaming_stmt body new_env), annotation)
    |Draw_pixel(expr, annotation) -> Draw_pixel((renaming_expr expr env), annotation)
    |Print(expr, annotation) -> Print((renaming_expr expr env), annotation)
    |Nop -> Nop

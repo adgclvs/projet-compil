@@ -4,6 +4,7 @@
 type token = 
   | Y
   | X
+  | WHILE
   | TO
   | TAIL
   | SUB
@@ -17,7 +18,9 @@ type token =
   | REAL_TYP
   | REAL_OF_INT
   | REAL of (float)
+  | QST_MARQ
   | PRINT
+  | POW
   | PIXEL
   | PI
   | OR
@@ -84,6 +87,7 @@ module MenhirInterpreter : sig
     | T_error : unit terminal
     | T_Y : unit terminal
     | T_X : unit terminal
+    | T_WHILE : unit terminal
     | T_TO : unit terminal
     | T_TAIL : unit terminal
     | T_SUB : unit terminal
@@ -97,7 +101,9 @@ module MenhirInterpreter : sig
     | T_REAL_TYP : unit terminal
     | T_REAL_OF_INT : unit terminal
     | T_REAL : (float) terminal
+    | T_QST_MARQ : unit terminal
     | T_PRINT : unit terminal
+    | T_POW : unit terminal
     | T_PIXEL : unit terminal
     | T_PI : unit terminal
     | T_OR : unit terminal

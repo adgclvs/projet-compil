@@ -1,6 +1,7 @@
 type token =
     Y
   | X
+  | WHILE
   | TO
   | TAIL
   | SUB
@@ -14,7 +15,9 @@ type token =
   | REAL_TYP
   | REAL_OF_INT
   | REAL of float
+  | QST_MARQ
   | PRINT
+  | POW
   | PIXEL
   | PI
   | OR
