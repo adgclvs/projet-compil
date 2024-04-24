@@ -13,7 +13,6 @@ type token =
   | SEMICOLON
   | R_SQ_BRK
   | R_PAR
-  | R_CUR_BRK
   | RED
   | REAL_TYP
   | REAL_OF_INT
@@ -29,7 +28,6 @@ type token =
   | MOD
   | L_SQ_BRK
   | L_PAR
-  | L_CUR_BRK
   | LT
   | LIST
   | LEQ
@@ -95,7 +93,6 @@ module MenhirInterpreter : sig
     | T_SEMICOLON : unit terminal
     | T_R_SQ_BRK : unit terminal
     | T_R_PAR : unit terminal
-    | T_R_CUR_BRK : unit terminal
     | T_RED : unit terminal
     | T_REAL_TYP : unit terminal
     | T_REAL_OF_INT : unit terminal
@@ -111,7 +108,6 @@ module MenhirInterpreter : sig
     | T_MOD : unit terminal
     | T_L_SQ_BRK : unit terminal
     | T_L_PAR : unit terminal
-    | T_L_CUR_BRK : unit terminal
     | T_LT : unit terminal
     | T_LIST : unit terminal
     | T_LEQ : unit terminal
@@ -150,6 +146,7 @@ module MenhirInterpreter : sig
   (* The indexed type of nonterminal symbols. *)
   
   type _ nonterminal = 
+    | N_type_expression : (Ast.type_expression) nonterminal
     | N_statement_list : (Ast.statement list) nonterminal
     | N_statement : (Ast.statement) nonterminal
     | N_program : (Ast.program) nonterminal

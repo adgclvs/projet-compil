@@ -60,6 +60,7 @@
 %token R_SQ_BRK  
 %token COMMA      
 %token SEMICOLON
+//%token QST_MARQ
 %token <string> ID
 %token <int> INT
 %token <float> REAL
@@ -99,6 +100,7 @@ statement:
 | SET L_PAR expr1 = expression COMMA expr2 = expression R_PAR {Affectation(expr1, expr2, Annotation.create $loc)}
 | typ = type_expression COLON  id = ID  {Declaration(id, typ, Annotation.create $loc)}
 | OPEN stmt_list = statement_list CLOSE {Block(stmt_list,Annotation.create $loc )}
+//Rajouer le ternaire 
 | IF L_PAR expr = expression R_PAR stmt1 = statement ELSE stmt2 = statement {IfThenElse(expr,stmt1, stmt2, Annotation.create $loc)}
 | IF L_PAR expr = expression R_PAR stmt = statement %prec Then {IfThenElse(expr, stmt, Nop, Annotation.create $loc)}
 | FOR  id = ID FROM expr1 = expression TO expr2 = expression STEP expr3 = expression stmt = statement {For(id, expr1,expr2,expr3,stmt, Annotation.create $loc)}

@@ -67,6 +67,7 @@ rule token = parse
     | "]"                           { R_SQ_BRK }
     | ","                           { COMMA }
     | ";"                           { SEMICOLON }
+    (* | "?"                         { QST_MARQ} *)
     | (alphamin)+ (alphanum)* as s  { ID(s) }
     | (digit)+ as i                 { INT(int_of_string i)}
     | "0x" (hexa)+ as i             { INT(int_of_string i)}

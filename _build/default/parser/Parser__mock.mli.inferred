@@ -10,7 +10,6 @@ type token =
   | SEMICOLON
   | R_SQ_BRK
   | R_PAR
-  | R_CUR_BRK
   | RED
   | REAL_TYP
   | REAL_OF_INT
@@ -26,7 +25,6 @@ type token =
   | MOD
   | L_SQ_BRK
   | L_PAR
-  | L_CUR_BRK
   | LT
   | LIST
   | LEQ
@@ -63,7 +61,7 @@ type token =
   | ADD
 val menhir_begin_marker : int
 val xv_unop : Ast.unary_operator
-val xv_typ : Ast.type_expression
+val xv_type_expression : Ast.type_expression
 val xv_statement_list : Ast.statement list
 val xv_statement : Ast.statement
 val xv_program : Ast.program
