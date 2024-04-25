@@ -1,0 +1,9 @@
+$<
+   Int:i;
+   Set(i,5);
+   While(i > 0) 
+    $<
+    Set(i, i - 1);
+    Print(i);
+    >$
+>$

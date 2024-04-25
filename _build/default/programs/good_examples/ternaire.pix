@@ -1,0 +1,14 @@
+$<
+    Int : a;
+    Int : b;
+    Int : c;
+
+    Int : res;
+
+    Set(a,1);
+    Set(b,2);
+    Set(c,3);
+
+    (a = 1) ? Set(res,b) : Set(res,c);
+    Print(res);
+>$

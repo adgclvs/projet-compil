@@ -1,0 +1,8 @@
+$<
+    Int : x;
+    Int : res;
+
+    Set(x,3);
+    Set(res,x**);
+    Print(res);
+>$
